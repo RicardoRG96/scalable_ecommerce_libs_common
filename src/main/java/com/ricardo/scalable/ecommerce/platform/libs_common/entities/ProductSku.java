@@ -1,6 +1,7 @@
 package com.ricardo.scalable.ecommerce.platform.libs_common.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -50,6 +52,9 @@ public class ProductSku {
     @Min(0)
     @NotNull
     private Integer stock;
+
+    @ManyToMany(mappedBy = "productSkus")
+    private List<Discount> discounts;
 
     @Column(name = "is_active")
     private Boolean isActive;
