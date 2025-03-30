@@ -37,7 +37,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private OrderStatus status;
+    private OrderStatus orderStatus;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_status", nullable = false)
@@ -62,12 +62,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, User user, BigDecimal totalAmount, OrderStatus status, PaymentStatus paymentStatus,
+    public Order(Long id, User user, BigDecimal totalAmount, OrderStatus orderStatus, PaymentStatus paymentStatus,
             Address shippingAddress, Address billingAddress, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.user = user;
         this.totalAmount = totalAmount;
-        this.status = status;
+        this.orderStatus = orderStatus;
         this.paymentStatus = paymentStatus;
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
@@ -100,11 +100,11 @@ public class Order {
     }
 
     public OrderStatus getStatus() {
-        return status;
+        return orderStatus;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public PaymentStatus getPaymentStatus() {
