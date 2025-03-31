@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
 
 import com.ricardo.scalable.ecommerce.platform.libs_common.enums.OrderStatus;
 import com.ricardo.scalable.ecommerce.platform.libs_common.enums.PaymentStatus;
@@ -99,11 +98,11 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public OrderStatus getStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setStatus(OrderStatus orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 
