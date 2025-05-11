@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.ricardo.scalable.ecommerce.platform.libs_common.enums.OrderStatus;
-import com.ricardo.scalable.ecommerce.platform.libs_common.enums.PaymentStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,10 +37,6 @@ public class Order {
     @Column(nullable = false)
     private OrderStatus orderStatus;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status", nullable = false)
-    private PaymentStatus paymentStatus;
-
     @ManyToOne
     @JoinColumn(name = "shipping_address_id", nullable = false)
     private Address shippingAddress;
@@ -61,13 +56,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, User user, BigDecimal totalAmount, OrderStatus orderStatus, PaymentStatus paymentStatus,
+    public Order(Long id, User user, BigDecimal totalAmount, OrderStatus orderStatus,
             Address shippingAddress, Address billingAddress, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.user = user;
         this.totalAmount = totalAmount;
         this.orderStatus = orderStatus;
-        this.paymentStatus = paymentStatus;
         this.shippingAddress = shippingAddress;
         this.billingAddress = billingAddress;
         this.createdAt = createdAt;
@@ -104,14 +98,6 @@ public class Order {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(PaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
     }
 
     public Address getShippingAddress() {
