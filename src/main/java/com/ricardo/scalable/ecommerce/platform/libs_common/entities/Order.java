@@ -2,11 +2,14 @@ package com.ricardo.scalable.ecommerce.platform.libs_common.entities;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.ricardo.scalable.ecommerce.platform.libs_common.enums.OrderStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,6 +19,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -44,6 +48,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "billing_address_id", nullable = false)
     private Address billingAddress;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> items = new ArrayList<>();
 
     @Column(name = "created_at")
     @CreationTimestamp
@@ -114,6 +121,14 @@ public class Order {
 
     public void setBillingAddress(Address billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
     public Timestamp getCreatedAt() {
