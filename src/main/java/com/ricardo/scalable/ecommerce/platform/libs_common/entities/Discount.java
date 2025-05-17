@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ricardo.scalable.ecommerce.platform.libs_common.enums.DiscountType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,8 +17,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.JoinColumn;
 
 @Entity
@@ -28,19 +27,15 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(name = "discount_type")
-    private String discountType;
+    private DiscountType discountType;
 
-    @NotNull
     @Column(name = "discount_value")
     private Double discountValue;
 
-    @NotNull    
     @Column(name = "start_date")
     private Timestamp startDate;
 
-    @NotNull
     @Column(name = "end_date")
     private Timestamp endDate;
 
@@ -67,8 +62,8 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(Long id, @NotBlank String discountType, @NotBlank Double discountValue,
-            @NotNull Timestamp startDate, @NotNull Timestamp endDate, Boolean isActive, List<ProductSku> productSkus,
+    public Discount(Long id, DiscountType discountType, Double discountValue,
+            Timestamp startDate, Timestamp endDate, Boolean isActive, List<ProductSku> productSkus,
             Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.discountType = discountType;
@@ -89,11 +84,11 @@ public class Discount {
         this.id = id;
     }
 
-    public String getDiscountType() {
+    public DiscountType getDiscountType() {
         return discountType;
     }
 
-    public void setDiscountType(String discountType) {
+    public void setDiscountType(DiscountType discountType) {
         this.discountType = discountType;
     }
 
@@ -153,6 +148,5 @@ public class Discount {
         this.updatedAt = updatedAt;
     }
 
-    
 }
 
