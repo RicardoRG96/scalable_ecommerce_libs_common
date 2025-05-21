@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ricardo.scalable.ecommerce.platform.libs_common.enums.OrderStatus;
 
 import jakarta.persistence.CascadeType;
@@ -50,6 +51,7 @@ public class Order {
     private Address billingAddress;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<OrderItem> items = new ArrayList<>();
 
     @Column(name = "created_at")
