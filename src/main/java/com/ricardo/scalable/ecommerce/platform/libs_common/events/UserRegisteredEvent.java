@@ -12,6 +12,9 @@ public class UserRegisteredEvent {
 
     private LocalDateTime registeredAt;
 
+    public UserRegisteredEvent() {
+    }
+
     public UserRegisteredEvent(Long userId, String email, String name, LocalDateTime registeredAt) {
         this.userId = userId;
         this.email = email;
