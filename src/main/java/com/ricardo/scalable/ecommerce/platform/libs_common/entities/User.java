@@ -48,6 +48,9 @@ public class User {
 
     private Boolean enabled;
 
+    @Column(name = "verification_token")
+    private String verificationToken;
+
     @Transient
     private boolean admin;
 
@@ -145,6 +148,14 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
     }
 
     public boolean isAdmin() {
