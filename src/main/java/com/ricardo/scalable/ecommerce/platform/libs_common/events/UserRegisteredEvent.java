@@ -10,15 +10,18 @@ public class UserRegisteredEvent {
 
     private String name;
 
+    private String token;
+
     private LocalDateTime registeredAt;
 
     public UserRegisteredEvent() {
     }
 
-    public UserRegisteredEvent(Long userId, String email, String name, LocalDateTime registeredAt) {
+    public UserRegisteredEvent(Long userId, String email, String name, String token, LocalDateTime registeredAt) {
         this.userId = userId;
         this.email = email;
         this.name = name;
+        this.token = token;
         this.registeredAt = registeredAt;
     }
 
@@ -44,6 +47,14 @@ public class UserRegisteredEvent {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public LocalDateTime getRegisteredAt() {
